@@ -24,7 +24,7 @@ for i in range(TOTAL_PROBLEMS):
             break
 end_time=time.time()
 total_time=end_time-start_time
-print(f'Well done! you take {round(total_time)} seconds')
+print(f'Well done! you take {round(total_time,2)} seconds')
 
         
         
