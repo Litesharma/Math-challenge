@@ -1,39 +1,25 @@
 import random
-signs=['-','x','+']
-max_num = 12
-min_num = 2
-answer = 0
-def generate_problem(min_num,max_num):
-    global answer
-    left=random.randint(min_num,max_num)
-    right=random.randint(min_num,max_num)
-    operator=random.choice(signs)
-    if operator=='+':
-        answer=left+right
-    elif operator=='-':
-        answer=left-right
-    else:
-        answer=left*right
-
-    return f'{left} {operator} {right} = '
+SIGNS=['-','*','+']
+MIN_NUM = 2
+MAX_NUM = 12
+TOTAL_PROBLEMS=10
+def generate_problem(MIN_NUM,MAX_NUM):
+    left=random.randint(MIN_NUM,MAX_NUM)
+    right=random.randint(MIN_NUM,MAX_NUM)
+    operator=random.choice(SIGNS)
+    exp=f'{left} {operator} {right}'
+    ans=eval(exp)
+    return exp,ans
 
 
-def check_answer(answer,user_answer):
-    return answer==user_answer
 print("Game start :)")
-n=1
-problem=generate_problem(min_num,max_num)
-user_answer=int(input(f'{problem}'))
-while n<5:
-    result=check_answer(answer,user_answer)
-    if not result:
-        user_answer=int(input(f'{problem}'))
-        
-    else:
-        problem=generate_problem(min_num,max_num)
-        user_answer=int(input(f'{problem}'))
-        n+=1
-    
+for i in range(TOTAL_PROBLEMS):
+    problem,answer=generate_problem(MIN_NUM,MAX_NUM)
+    while True:
+        user_answer=int(input(f'\nproblem #{i+1}\n{problem} = '))
+        if user_answer==answer:
+            break
+
         
         
 
